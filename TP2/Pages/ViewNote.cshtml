@@ -1,0 +1,13 @@
+﻿@page "{file}"
+@model TP2.Pages.ViewNoteModel
+@{
+    ViewData["Title"] = "Visualizar Nota";
+}
+
+<h2>Visualizar Nota</h2>
+
+<h4>@Model.FileName</h4>
+
+<pre>@Model.Content</pre>
+
+<a asp-page="ListNotes">Voltar para lista</a>

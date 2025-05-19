@@ -1,0 +1,19 @@
+﻿@page
+@model TP2.Pages.SaveNoteModel
+@{
+    ViewData["Title"] = "Salvar Nota";
+}
+
+<h2>Escreva sua nota</h2>
+
+<form method="post">
+    <textarea asp-for="Input.Content" rows="10" cols="60"></textarea>
+    <br />
+    <button type="submit">Salvar</button>
+</form>
+
+@if (Model.FileName != null)
+{
+    <p>Arquivo salvo com sucesso!</p>
+    <a href="/files/@Model.FileName" download>Clique aqui para baixar</a>
+}

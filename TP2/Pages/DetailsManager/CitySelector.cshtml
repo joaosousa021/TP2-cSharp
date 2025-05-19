@@ -1,0 +1,18 @@
+﻿@page
+@model TP2.Pages.DetailsManager.CitySelectorModel
+@{
+    ViewData["Title"] = "Selecionar Cidade";
+}
+
+<h2>Escolha uma cidade</h2>
+
+<ul>
+    @foreach (var city in Model.Cities)
+    {
+        <li>
+            <a asp-page="../CityManager/CityDetails" asp-route-cityName="@city">
+                @city
+            </a>
+        </li>
+    }
+</ul>

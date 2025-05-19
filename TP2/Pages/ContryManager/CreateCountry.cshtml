@@ -1,0 +1,49 @@
+﻿@page
+@model TP2.Pages.CountryManager.CreateCountryModel
+@{
+    ViewData["Title"] = "Cadastrar Múltiplos Países";
+}
+
+<h2>Cadastro de Múltiplos Países</h2>
+
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    @for (int i = 0; i < Model.Paises.Count; i++)
+    {
+        <fieldset class="mb-4 border p-3 rounded">
+            <legend>País @(i + 1)</legend>
+
+            <div class="mb-2">
+                <label asp-for="Paises[i].NomePais" class="form-label"></label>
+                <input asp-for="Paises[i].NomePais" class="form-control" />
+                <span asp-validation-for="Paises[i].NomePais" class="text-danger"></span>
+            </div>
+
+            <div class="mb-2">
+                <label asp-for="Paises[i].CodigoPais" class="form-label"></label>
+                <input asp-for="Paises[i].CodigoPais" class="form-control" maxlength="2" />
+                <span asp-validation-for="Paises[i].CodigoPais" class="text-danger"></span>
+            </div>
+        </fieldset>
+    }
+
+    <button type="submit" class="btn btn-primary">Cadastrar Países</button>
+</form>
+
+@if (Model.PaisesCadastrados?.Any() == true)
+{
+    <div class="mt-4">
+        <h3>Países Cadastrados:</h3>
+        <ul>
+            @foreach (var pais in Model.PaisesCadastrados)
+            {
+                <li>@pais.NomePais (@pais.CodigoPais)</li>
+            }
+        </ul>
+    </div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
